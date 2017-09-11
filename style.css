@@ -1,6 +1,7 @@
 body{
-    background-color: #C5C1C1;
+    background-color: #332E2E;
     text-align: center;
+    color: white;
 }
 #game{
     display: flex;
@@ -10,14 +11,29 @@ body{
 }
 #display{
     position: absolute;
-    margin: 0 auto;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%,-50%);
     background-color: black;
     width: 300px;
     height: 300px;
     border-radius: 200px;
+}
+h1{
+    position: relative;
+    top: 25%;
+}
+#score{
+    position: relative;
+    top: 17%;
+    right: 12%
+}
+#start{
+    position: relative;
+    transform: translate(120%,290%);
+    height: 25px;
+    width: 36px;
+    color: black;
 }
 button{
     color: inherit;
