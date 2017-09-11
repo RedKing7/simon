@@ -1,23 +1,48 @@
+body{
+    background-color: #C5C1C1;
+    text-align: center;
+}
 #game{
     display: flex;
+    flex-flow: row wrap;
+    margin: 0 auto;
+    width: 300px;
+}
+button{
+    color: inherit;
+    -border: none;
+    padding: 0;
+    outline: inherit;
 }
 #green{
     background-color: green;
-    height: 20px;
-    width: 20px;
+    height: 150px;
+    width: 150px;
+    border-top-left-radius: 150px;
+    border-color: black;
+    border-width: 5px;
 }
 #red{
     background-color: red;
-    height: 20px;
-    width: 20px;
+    height: 150px;
+    width: 150px;
+    border-top-right-radius: 150px;
+    border-color: black;
+    border-width: 5px;
 }
 #yellow{
     background-color: yellow;
-    height: 20px;
-    width: 20px;
+    height: 150px;
+    width: 150px;
+    border-bottom-left-radius: 150px;
+    border-color: black;
+    border-width: 5px;
 }
 #blue{
     background-color: blue;
-    height: 20px;
-    width: 20px;
+    height: 150px;
+    width: 150px;
+    border-bottom-right-radius: 150px;
+    border-color: black;
+    border-width: 5px;
 }
