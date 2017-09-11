@@ -35,40 +35,26 @@ h1{
     width: 36px;
     color: black;
 }
-button{
-    color: inherit;
-    padding: 0;
+.simon-button{
     outline: inherit;
+    height: 300px;
+    width: 300px;
+    border-color: black;
+    border-width: 5px;
 }
 #green{
     background-color: darkgreen;
-    height: 300px;
-    width: 300px;
     border-top-left-radius: 300px;
-    border-color: black;
-    border-width: 5px;
 }
 #red{
     background-color: darkred;
-    height: 300px;
-    width: 300px;
     border-top-right-radius: 300px;
-    border-color: black;
-    border-width: 5px;
 }
 #yellow{
     background-color: darkgoldenrod;
-    height: 300px;
-    width: 300px;
     border-bottom-left-radius: 300px;
-    border-color: black;
-    border-width: 5px;
 }
 #blue{
     background-color: darkblue;
-    height: 300px;
-    width: 300px;
     border-bottom-right-radius: 300px;
-    border-color: black;
-    border-width: 5px;
 }
