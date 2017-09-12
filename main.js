@@ -105,6 +105,14 @@ const lightSequence = (colors) =>{
     });
 }
 
+const updateScore = (colors) =>{
+    console.log('UPDATE SCORE');
+    $('#score').text(colors.length);
+}
+
+const gameOver = () =>{
+    console.log('GAME OVER');
+}
 
 $('#display').on({
     'click': function(event){
