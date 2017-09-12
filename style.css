@@ -1,62 +1,107 @@
+html{
+    height: 100%;
+}
+body{
+    min-height: 80%;
+}
 body{
     background-color: #332E2E;
     text-align: center;
     color: white;
     font-family: sans-serif;
+    display: flex;
+    align-items: center;
 }
 #game{
     display: flex;
     flex-flow: row wrap;
     margin: 0 auto;
-    width: 600px;
-}
-#display{
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+    max-width: 600px;
+    max-height: 600px;
+    width: 90vw;
+    height: 90vw;
     background-color: black;
-    width: 300px;
-    height: 300px;
-    border-radius: 200px;
-}
-h1{
-    position: relative;
-    top: 25%;
-}
-#score{
-    position: relative;
-    width: 110px;
-    top: 17%;
-    right: -18%
-}
-#start{
-    position: relative;
-    transform: translate(120%,290%);
-    height: 25px;
-    width: 38px;
-    color: black;
+    border-radius: 60vw;
 }
 .simon-button{
     outline: inherit;
-    height: 300px;
-    width: 300px;
+    height: 50%;
+    width: 50%;
     border-color: black;
-    border-width: 5px;
+    border-width: 15px;
 }
 #green{
     background-color: darkgreen;
-    border-top-left-radius: 300px;
+    border-top-left-radius: 3000px;
 }
 #red{
     background-color: darkred;
-    border-top-right-radius: 300px;
+    border-top-right-radius: 3000px;
 }
 #yellow{
     background-color: darkgoldenrod;
-    border-bottom-left-radius: 300px;
+    border-bottom-left-radius: 3000px;
 }
 #blue{
     background-color: darkblue;
-    border-bottom-right-radius: 300px;
+    border-bottom-right-radius: 3000px;
+}
+
+#display{
+    position: absolute;
+    top: 40.5%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: black;
+    width: 45vw;
+    height: 45vw;
+    max-height: 300px;
+    max-width: 300px;
+    border-radius: 30vw;
+}
+h1{
+    position: relative;
+    top: 7%;
+    font-size: 9vw;
+}
+#score{
+    position: relative;
+    width: 10vw;
+    top: -7%;
+    right: -20%;
+    font-size: 3vw;
+}
+#start{
+    position: relative;
+    outline: inherit;
+    left: 25%;
+    height: 5vw;
+    width: 9vw;
+    max-width: 60px;
+    max-height: 30px;
+    color: black;
+    font-size: 2.3vw;
+    border-radius: 10vw;
+    border-width: .5vw;
+}
+
+@media screen and (max-width: 350px) {
+    h1{
+       font-size: 24px;
+    }
+    #score{
+        font-size: 12px;
+    }
+}
+@media screen and (min-width: 600px) {
+    h1{
+       font-size: 50px;
+    }
+    #score{
+        font-size: 30px;
+        width: 100px;
+    }
+    #start{
+        font-size: 17px;
+    }
 }
