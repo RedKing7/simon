@@ -182,7 +182,7 @@ const gameOver = () =>{
     running = false;
 }
 
-$('#display').on({
+$('#start').on({
     'click': function(event){
         if(!running){
             console.log('START');

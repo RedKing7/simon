@@ -26,8 +26,9 @@ h1{
 }
 #score{
     position: relative;
+    width: 110px;
     top: 17%;
-    right: 12%
+    right: -18%
 }
 #start{
     position: relative;
