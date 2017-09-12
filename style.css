@@ -2,6 +2,7 @@ body{
     background-color: #332E2E;
     text-align: center;
     color: white;
+    font-family: sans-serif;
 }
 #game{
     display: flex;

@@ -5,97 +5,119 @@ const RED = 1;
 const YELLOW = 2;
 const BLUE = 3;
 
+var sequence = [];
+var guess = [];
 
-const listenersOff = () =>{
-    $('#green').off();
-    $('#red').off();
-    $('#yellow').off();
-    $('#blue').off();
-}
+let isPlayersTurn;
 
-const playersTurn = (colors) =>{
+$('.simon-button').on({
+    'mouseover': function(event){
+        if(isPlayersTurn){
+            $button = $(event.target);
+            switch($button.attr('id')){
+                case 'green':
+                    $button.css('background-color', 'green');
+                    break;
+
+                case 'red':
+                    $button.css('background-color', 'firebrick');
+                    break;
+
+                case 'yellow':
+                    $button.css('background-color', 'goldenrod');
+                    break;
+
+                case 'blue':
+                    $button.css('background-color', 'mediumblue');
+                    break;
+
+                default: alert("something broke");
+            }
+        }
+    },
+
+    'mouseleave': function(event){
+        if(isPlayersTurn){
+            $button = $(event.target);
+            switch($button.attr('id')){
+                case 'green':
+                    $button.css('background-color', 'darkgreen');
+                    break;
+
+                case 'red':
+                    $button.css('background-color', 'darkred');
+                    break;
+
+                case 'yellow':
+                    $button.css('background-color', 'darkgoldenrod');
+                    break;
+
+                case 'blue':
+                    $button.css('background-color', 'darkblue');
+                    break;
+
+                default: alert("something broke");
+            }
+        }
+    },
+    
+    'click': function(event){
+        if(isPlayersTurn){
+            $button = $(event.target);
+            switch($button.attr('id')){
+                case 'green':
+                    $button.css('background-color', 'lime');
+                    break;
+
+                case 'red':
+                    $button.css('background-color', 'red');
+                    break;
+
+                case 'yellow':
+                    $button.css('background-color', 'yellow');
+                    break;
+
+                case 'blue':
+                    $button.css('background-color', 'blue');
+                    break;
+
+                default: alert("something broke");
+            }
+        }
+    }
+})
+
+/*const playersTurn = () =>{
     console.log('PLAYERS TURN');
-    let guess = [];
-    $('#green').on({
-        'mouseover': function(event){
-            $(event.target).css('background-color', 'green');
-        },
-        'mouseleave': function(event){
-            $(event.target).css('background-color', 'DarkGreen');         
-        },
-        'click': function(event){
-            $(event.target).css('background-color', 'lime');
 
-        }
-    });
-
-    $('#red').on({
-        'mouseover': function(event){
-            $(event.target).css('background-color', 'firebrick');        
-        },
-        'mouseleave': function(event){
-            $(event.target).css('background-color', 'darkred');
-        },
-        'click': function(event){
-            $(event.target).css('background-color', 'red');
-
-        }
-    });
-
-    $('#yellow').on({
-        'mouseover': function(event){
-            $(event.target).css('background-color', 'goldenrod');           
-        },
-        'mouseleave': function(event){
-            $(event.target).css('background-color', 'darkgoldenrod');           
-        },
-        'click': function(event){
-            $(event.target).css('background-color', 'yellow');
-
-        }
-    });
-
-    $('#blue').on({
-        'mouseover': function(event){
-            $(event.target).css('background-color', 'mediumblue');            
-        },
-        'mouseleave': function(event){
-            $(event.target).css('background-color', 'darkblue');            
-        },
-        'click': function(event){
-            $(event.target).css('background-color', 'blue');
-
-        }
-    });
-
-    do{
-
-    }while(guess.length < colors.length);
+    playerListeners();
 
     listenersOff();
 
-    if(guess === colors){
-        updateScore(colors);
-        computersTurn(colors); 
-    } else { 
+    if(guess === sequence){
+        guess = [];
+        updateScore();
+        computersTurn(); 
+    } else {
         gameOver();
     }
-}
+}*/
 
-const computersTurn = (colors) =>{
+const computersTurn = () =>{
     console.log('COMPUTERS TURN');
+    playersTurn = false;
     listenersOff();
 
     let newColor = Math.floor(Math.random() * 4);
-    colors.push(newColor);
+    sequence.push(newColor);
 
-    lightSequence(colors);
-    playersTurn(colors);
+    lightSequence();
+    playersTurn = true;
 }
 
-const lightSequence = (colors) =>{
+const lightSequence = () =>{
     console.log('LIGHT SEQUENCE');
-    colors.forEach(function(color) {
+    sequence.forEach(function(color) {
         switch(color){
             case GREEN:
                 $('#green').css('background', 'lime');
@@ -132,9 +154,9 @@ const lightSequence = (colors) =>{
     });
 }
 
-const updateScore = (colors) =>{
+const updateScore = () =>{
     console.log('UPDATE SCORE');
-    $('#score').text(`Score: ${colors.length}`);
+    $('#score').text(`Score: ${sequence.length}`);
 }
 
 const gameOver = () =>{
@@ -145,7 +167,6 @@ $('#display').on({
     'click': function(event){
         $('#display').off();
         console.log('START');
-        let colors = [];
-        computersTurn(colors);
+        computersTurn();
     }
 })
