@@ -1,4 +1,7 @@
-const playersTurn = () =>{
+const SPEED = 2000; //2 seconds
+
+const playersTurn = (colors) =>{
+    console.log('PLAYERS TURN');
     $('#green').on({
         'mouseover': function(event){
             $(event.target).css('background-color', 'green')
@@ -46,6 +49,15 @@ const playersTurn = () =>{
             $(event.target).css('background-color', 'blue')
         }
     })
+
+    updateScore(colors);
 }
 
-playersTurn();
+
+$('#display').on({
+    'click': function(event){
+        console.log('START');
+        let colors = [];
+        //setTimeout(computersTurn(colors), SPEED);
+    }
+})
