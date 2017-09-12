@@ -1,4 +1,4 @@
-const SPEED = 2000; //2 seconds
+const SPEED = 1500; //1.5 seconds
 
 const GREEN = 0;
 const RED = 1;
@@ -9,6 +9,9 @@ var sequence;
 var guess;
 var running;
 var playersTurn;
+
+var interval;
+var sequenceCounter;
 
 $('.simon-button').on({
     'mouseover': function(event){
@@ -115,60 +118,57 @@ const computersTurn = () =>{
     let newColor = Math.floor(Math.random() * 4);
     sequence.push(newColor);
     console.log(sequence);
-    lightSequence();
 
-    setTimeout(function(){ //wait 1 second before letting player click
-        console.log('PLAYERS TURN');
-        guess = []; // reset guess array
-        playersTurn = true;
-    }, 1000);
+    sequenceCounter = 0;
+    interval = setInterval(function(){lightSequence()}, SPEED);
 }
 
 const lightSequence = () =>{
     console.log('LIGHT SEQUENCE');
-    sequence.forEach(function(color) {
-        switch(color){
-            case GREEN:
-                setTimeout(function(){
-                    $('#green').css('background', 'lime');                    
-                }, 500);
-                setTimeout(function(){
-                    $('#green').css('background', 'darkgreen');
-                }, 500);
-                break;
+    switch(sequence[sequenceCounter]){
+        case GREEN:
+            $('#green').css('background', 'lime');
+            setTimeout(function(){
+                $('#green').css('background', 'darkgreen');
+            }, 500);            
+            break;
 
-            case RED:
-                setTimeout(function(){
-                    $('#red').css('background', 'red');
-                }, 500);
-                setTimeout(function(){
-                    $('#red').css('background', 'darkred');                    
-                }, 500);
-                break;
+        case RED:
+            $('#red').css('background', 'red');
+            setTimeout(function(){
+                $('#red').css('background', 'darkred');                    
+            }, 500);
+            break;
 
-            case YELLOW:
-                setTimeout(function(){
-                    $('#yellow').css('background', 'yellow');
-                }, 500);
-                setTimeout(function(){
-                    $('#yellow').css('background', 'darkgoldenrod');                    
-                }, 500);
-                break;
+        case YELLOW:
+            $('#yellow').css('background', 'yellow');
+            setTimeout(function(){
+                $('#yellow').css('background', 'darkgoldenrod');                    
+            }, 500);
+            break;
 
-            case BLUE:
-                setTimeout(function(){    
-                    $('#blue').css('background', 'blue');
-                }, 500);
-                setTimeout(function(){
-                    $('#blue').css('background', 'darkblue');                    
-                }, 500);
-                break;
+        case BLUE:
+            $('#blue').css('background', 'blue');
+            setTimeout(function(){
+                $('#blue').css('background', 'darkblue');                    
+            }, 500);
+            break;
 
-            default:
-                alert('ERROR');
-                //this should never happen
-        }
-    });
+        default:
+            alert('ERROR');
+            //this should never happen
+    }
+    if(sequenceCounter === (sequence.length - 1)){
+        sequenceCounter = 0;
+        clearInterval(interval);
+        setTimeout(function(){ //wait 1 second before letting player click
+            console.log('PLAYERS TURN');
+            guess = []; // reset guess array
+            playersTurn = true; // let player click
+        }, 1000);
+    } else {
+        sequenceCounter++;
+    }
 }
 
 const updateScore = () =>{
@@ -178,6 +178,7 @@ const updateScore = () =>{
 
 const gameOver = () =>{
     console.log('GAME OVER');
+    alert('Game Over');
     running = false;
 }
 
