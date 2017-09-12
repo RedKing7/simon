@@ -53,11 +53,63 @@ const playersTurn = (colors) =>{
     updateScore(colors);
 }
 
+const computersTurn = (colors) =>{
+    console.log('COMPUTERS TURN');
+    $('#green').off();
+    $('#red').off();
+    $('#yellow').off();
+    $('#blue').off();
+
+    let newColor = Math.floor(Math.random() * 4);
+    colors.push(newColor);
+
+    lightSequence(colors);
+    //playersTurn(colors);
+}
+
+const lightSequence = (colors) =>{
+    console.log('LIGHT SEQUENCE');
+    colors.forEach(function(color) {
+        switch(color){
+            case 0:
+                $('#green').css('background', 'lime');
+                setTimeout(function(){
+                    $('#green').css('background', 'darkgreen');
+                }, SPEED);
+                break;
+
+            case 1:
+                $('#red').css('background', 'red');
+                setTimeout(function(){
+                    $('#red').css('background', 'darkred');                    
+                }, SPEED);
+                break;
+
+            case 2:
+                $('#yellow').css('background', 'yellow');
+                setTimeout(function(){
+                    $('#yellow').css('background', 'darkgoldenrod');                    
+                }, SPEED);
+                break;
+
+            case 3:
+                $('#blue').css('background', 'blue');
+                setTimeout(function(){
+                    $('#blue').css('background', 'darkblue');                    
+                }, SPEED);
+                break;
+
+            default:
+                alert('ERROR');
+        }
+    });
+}
+
 
 $('#display').on({
     'click': function(event){
         console.log('START');
         let colors = [];
-        //setTimeout(computersTurn(colors), SPEED);
+        computersTurn(colors);
     }
 })
