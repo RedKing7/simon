@@ -173,7 +173,7 @@ const lightSequence = () =>{
 
 const updateScore = () =>{
     console.log('UPDATE SCORE');
-    $('#score').text(`Score: ${sequence.length}`);
+    $('#score').text(sequence.length);
 }
 
 const gameOver = () =>{
