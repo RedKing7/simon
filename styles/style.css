@@ -78,6 +78,8 @@ h1{
     top: -13%;
     right: -20%;
     font-size: 7vw;
+    -background-color: #91B49C;
+    -color: rgba(0, 0, 0, 0.6);
 }
 #start{
     font-family: 'MDuel';    

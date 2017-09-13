@@ -1,4 +1,4 @@
-const SPEED = 1500; //1.5 seconds
+var SPEED = 1500; //1.5 seconds
 
 const GREEN = 0;
 const RED = 1;
@@ -12,6 +12,12 @@ var playersTurn;
 
 var interval;
 var sequenceCounter;
+
+const greenSound = document.getElementById('green-sound');
+const redSound = document.getElementById('red-sound');
+const yellowSound = document.getElementById('yellow-sound');
+const blueSound = document.getElementById('blue-sound');
+const loseSound = document.getElementById('lose-sound');
 
 $('.simon-button').on({
     'mouseover': function(event){
@@ -70,26 +76,42 @@ $('.simon-button').on({
             switch($button.attr('id')){
                 case 'green':
                     $('#green').css('background-color', 'lime');
+                    greenSound.play();
                     guess.push(GREEN);
-                    setTimeout(function(){$('#green').css('background-color', 'darkgreen')}, 200);
+                    setTimeout(function(){
+                        $('#green').css('background-color', 'darkgreen')
+                        greenSound.pause();
+                    }, 200);
                     break;
 
                 case 'red':
                     $('#red').css('background-color', 'red');
+                    redSound.play();
                     guess.push(RED);
-                    setTimeout(function(){$('#red').css('background-color', 'darkred')}, 200);
+                    setTimeout(function(){
+                        $('#red').css('background-color', 'darkred')
+                        redSound.pause();
+                    }, 200);
                     break;
 
                 case 'yellow':
                     $('#yellow').css('background-color', 'yellow');
+                    yellowSound.play();
                     guess.push(YELLOW);
-                    setTimeout(function(){$('#yellow').css('background-color', 'darkgoldenrod')}, 200);
+                    setTimeout(function(){
+                        $('#yellow').css('background-color', 'darkgoldenrod')
+                        yellowSound.pause();
+                    }, 200);
                     break;
 
                 case 'blue':
                     $('#blue').css('background-color', 'blue');
+                    blueSound.play();
                     guess.push(BLUE);
-                    setTimeout(function(){$('#blue').css('background-color', 'darkblue')}, 200);
+                    setTimeout(function(){
+                        $('#blue').css('background-color', 'darkblue')
+                        blueSound.pause();
+                    }, 200);
                     break;
 
                 default: alert("something broke"); //this should never happen
@@ -113,43 +135,51 @@ $('.simon-button').on({
 
 const computersTurn = () =>{
     playersTurn = false;
-    console.log('COMPUTERS TURN');
+    //console.log('COMPUTERS TURN');
 
     let newColor = Math.floor(Math.random() * 4);
     sequence.push(newColor);
-    console.log(sequence);
+    //console.log(sequence);
 
     sequenceCounter = 0;
     interval = setInterval(function(){lightSequence()}, SPEED);
 }
 
 const lightSequence = () =>{
-    console.log('LIGHT SEQUENCE');
+    //console.log('LIGHT SEQUENCE');
     switch(sequence[sequenceCounter]){
         case GREEN:
+            greenSound.play();
             $('#green').css('background', 'lime');
             setTimeout(function(){
+                greenSound.pause();
                 $('#green').css('background', 'darkgreen');
             }, 500);            
             break;
 
         case RED:
+            redSound.play();
             $('#red').css('background', 'red');
             setTimeout(function(){
+                redSound.pause();
                 $('#red').css('background', 'darkred');                    
             }, 500);
             break;
 
         case YELLOW:
+            yellowSound.play();
             $('#yellow').css('background', 'yellow');
             setTimeout(function(){
+                yellowSound.pause();
                 $('#yellow').css('background', 'darkgoldenrod');                    
             }, 500);
             break;
 
         case BLUE:
+            blueSound.play();
             $('#blue').css('background', 'blue');
             setTimeout(function(){
+                blueSound.pause();
                 $('#blue').css('background', 'darkblue');                    
             }, 500);
             break;
@@ -172,20 +202,21 @@ const lightSequence = () =>{
 }
 
 const updateScore = () =>{
-    console.log('UPDATE SCORE');
+    //console.log('UPDATE SCORE');
     $('#score').text(sequence.length);
 }
 
 const gameOver = () =>{
-    console.log('GAME OVER');
-    alert('Game Over');
+    //console.log('GAME OVER');
+    loseSound.play();
+    setTimeout(function(){loseSound.pause()}, 1000); //play sound for 1 second
     running = false;
 }
 
 $('#start').on({
     'click': function(event){
         if(!running){
-            console.log('START');
+            //console.log('START');
             sequence = [];
             guess = [];
             running = true;
