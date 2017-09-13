@@ -119,7 +119,7 @@ $('.simon-button').on({
 
             for(let i = 0; i < guess.length; i++){
                 if(guess[i] !== sequence[i]){
-                    gameOver();
+                    setTimeout(function(){ gameOver() }, 200);
                     return;
                 }
             }
