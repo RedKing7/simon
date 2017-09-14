@@ -5,6 +5,6 @@ deployed app: https://redking7.github.io/simon/
 
 trello board: https://trello.com/b/Ppz9ySi9
 
-Things I'd like to add later:
-  -leaderboard
-  -different difficulties
+Things I'd like to do later:
+-add a leaderboard
+-make sound files smaller, for more consistent audio across devices
